@@ -25,7 +25,7 @@
   # Home Directory
   home = {
     username = "murphodinger";
-    home-directory = "/home/murphodinfger";
+    home-directory = "/home/murphodinger";
   };
 
   home-packages = with pkgs; [
