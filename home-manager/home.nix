@@ -28,7 +28,7 @@
     homeDirectory = "/home/murphodinger";
   };
 
-  home-packages = with pkgs; [
+  home.packages = with pkgs; [
   # Utilites
   gparted
   steam-run
