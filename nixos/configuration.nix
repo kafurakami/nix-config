@@ -31,7 +31,6 @@
   #     value.source = value.flake;
   #   })
   #   config.nix.registry;
-
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -120,10 +119,10 @@
 
 
   # Fonts
-#  fonts.fonts = with pkgs; [
-#    (nerdfonts.override { fonts = [ "Iosevka" ]; })
-#    jetbrains-mono
-#  ];
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "Iosevka" "NerdFontsSymbolsOnly" ]; })
+    jetbrains-mono
+  ];
 
   # Configure keymap in X11
   # services.xserver.layout = "us";

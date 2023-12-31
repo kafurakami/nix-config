@@ -72,8 +72,8 @@
   spotify
 
   # Fonts
-  (nerdfonts.override { fonts = [ "Iosevka" "NerdFontsSymbolsOnly" ]; })
-  jetbrains-mono
+  # (nerdfonts.override { fonts = [ "Iosevka" "NerdFontsSymbolsOnly" ]; })
+  # jetbrains-mono
 
   ];
     
