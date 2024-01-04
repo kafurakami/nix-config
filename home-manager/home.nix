@@ -48,6 +48,7 @@
   glibc
   gcc13
   libgccjit
+  libwebp
   wl-clipboard
 
   # VPN

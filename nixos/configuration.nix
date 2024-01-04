@@ -21,6 +21,13 @@
   # To make nix3 commands consistent with your flake
   nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    openssl
+  ];
+
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix comamnds consistent as well!
   # nix.nixPath = ["/etc/nix/path"];
