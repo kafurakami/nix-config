@@ -142,7 +142,6 @@
   # LSD Config
   xdg.configFile."lsd/config.yaml".source = ./lsd/config.yaml;
 
-
   # Direnv Config
   programs.direnv = {
     enable = true;
