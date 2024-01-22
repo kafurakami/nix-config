@@ -66,6 +66,63 @@ in {
     };
   };
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        FastConnectable = "true";
+	Experimental = "true";
+      };
+    };
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      openssl
+    ];
+  };
+
+  systemd.services.keyd = {
+    description = "key remapping daemon";
+    requires = [ "local-fs.target" ];
+    after = [ "local-fs.target" ];
+    wantedBy = [ "sysinit.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.keyd}/bin/keyd";
+      # Restart = "on-failure";
+    };
+  };
+
+  environment.etc."keyd/default.conf".text = ''
+    [ids]
+    *
+
+    [shift]
+
+    [main]
+    capslock = overload(control, esc)
+    rightalt = -
+  '';
+
+  services.thermald.enable = false;
+
+  services.power-profiles-daemon.enable = false;
+
   programs.dconf.enable = true;
 
 }

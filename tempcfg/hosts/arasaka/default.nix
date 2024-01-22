@@ -22,6 +22,10 @@
     consoleLogLevel = 3;
   };
 
+  services.xserver.enable = true;
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   # Networking Options
   networking = {
     hostName = "arasaka";

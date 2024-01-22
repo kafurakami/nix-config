@@ -8,6 +8,7 @@
 
   # For other home manager modules
   imports = [
+    ./hyprland
   ];
   
   nixpkgs = {
@@ -34,7 +35,6 @@
   steam-run
   libsForQt5.yakuake
   libsForQt5.gwenview
-  cloudflare-warp
   mpv
   qbittorrent
 
@@ -147,6 +147,12 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  # Emacs
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -1,9 +1,11 @@
 {
   imports = [
     ./browsers.nix
-    ./common.nix
+    ./vpn.nix
     ./git.nix
-    ./media.nix
+    ./editors.nix
     ./gaming.nix
+    ./media.nix
+    ./utils.nix
   ];
 }

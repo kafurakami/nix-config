@@ -122,14 +122,14 @@
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.displayManager.defaultSession = "plasmawayland";
   
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    elisa
-    gwenview
-    kate
-    khelpcenter
-    plasma-browser-integration
-    print-manager
-  ];
+  # environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+  #   elisa
+  #   gwenview
+  #   kate
+  #   khelpcenter
+  #   plasma-browser-integration
+  #   print-manager
+  # ];
 
   programs.dconf.enable = true;
 
@@ -195,9 +195,15 @@
   # };
 
   # List services that you want to enable:
-  services.supergfxd.enable = true;
-  services.asusd.enable = true;
-  services.asusd.enableUserService = true;
+  # services.supergfxd.enable = true;
+  # services.asusd.enable = true;
+  # services.asusd.enableUserService = true;
+  
+  # Hyprland
+  # programs.hyprland = {
+  #  enable = true;
+  #  xwayland.enable = true;
+  # };
 
   # Keyd
   # Create systemd service
