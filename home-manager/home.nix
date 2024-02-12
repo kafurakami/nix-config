@@ -43,6 +43,7 @@
   fzf
   lsd
   btop
+  ripgrep
   aria2
   ranger
   glibc

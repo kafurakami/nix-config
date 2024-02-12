@@ -195,10 +195,22 @@
   # };
 
   # List services that you want to enable:
-  # services.supergfxd.enable = true;
+  services.supergfxd = {
+    enable = true;
+  };
+
+  systemd.services.supergfxd.path = [ pkgs.pciutils ];
+
   # services.asusd.enable = true;
   # services.asusd.enableUserService = true;
   
+  # services = {
+  #   asusd = {
+  #     enable = true;
+  #     enableUserService = true;
+  #   };
+  # };
+
   # Hyprland
   # programs.hyprland = {
   #  enable = true;

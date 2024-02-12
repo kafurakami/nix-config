@@ -10,7 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
+    hardware.url = "github:nixos/nixos-hardware";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
@@ -21,6 +21,7 @@
     self,
     nixpkgs,
     home-manager,
+    hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -31,7 +32,10 @@
       arasaka = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
+        modules = [
+	./nixos/configuration.nix
+	hardware.nixosModules.asus-zephyrus-ga40
+	];
       };
     };
 
