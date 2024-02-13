@@ -1,6 +1,7 @@
 { 
   inputs,
   lib,
+  outputs,
   config,
   pkgs,
   ...
@@ -13,6 +14,7 @@
   
   nixpkgs = {
     overlays = [
+      outputs.overlays.unstable-packages
     ];
 
     config = {
@@ -63,6 +65,7 @@
   bottles-unwrapped
   winetricks
   wineWowPackages.stable
+  steam
 
   # Browsers
   firefox

@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
@@ -21,11 +22,13 @@
     self,
     nixpkgs,
     home-manager,
+    nixpkgs-unstable,
     hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
   in {
+    overlays = import ./overlays {inherit inputs;};
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
@@ -34,7 +37,7 @@
         # > Our main nixos configuration file <
         modules = [
 	./nixos/configuration.nix
-	hardware.nixosModules.asus-zephyrus-ga40
+	hardware.nixosModules.asus-zephyrus-ga401
 	];
       };
     };

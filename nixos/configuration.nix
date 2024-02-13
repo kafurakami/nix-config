@@ -5,6 +5,7 @@
 { 
   inputs,
   lib,
+  outputs,
   config, 
   pkgs, 
   ... 
@@ -15,6 +16,7 @@
 
   nixpkgs = {
     overlays = [
+      outputs.overlays.unstable-packages
     ];
   
     config = {
@@ -87,17 +89,21 @@
     };
   };
 
-  services.power-profiles-daemon.enable = false;
-  
-  services.tlp = {
+  services.power-profiles-daemon.enable = true;
+  systemd.services.power-profiles-daemon = {
     enable = true;
-    settings = {
-      CPU_BOOST_ON_AC = 1;
-      CPU_BOOST_ON_BAT = 0;
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    };
+    wantedBy = [ "multi-user.target" ];
   };
+
+  #services.tlp = {
+  #  enable = true;
+  #  settings = {
+  #    CPU_BOOST_ON_AC = 1;
+  #    CPU_BOOST_ON_BAT = 0;
+  #    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #  };
+  #};
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -115,7 +121,7 @@
   services.xserver.enable = true;
 
   # AMD GPU
-   services.xserver.videoDrivers = [ "amdgpu" ];
+   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
@@ -181,9 +187,12 @@
     plymouth
     wget
     exfat
+    pciutils
     keyd
     git
     curl
+    asusctl
+    unstable.supergfxctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -195,11 +204,11 @@
   # };
 
   # List services that you want to enable:
-  services.supergfxd = {
-    enable = true;
-  };
+  # services.supergfxd = {
+  #  enable = true;
+  # };
 
-  systemd.services.supergfxd.path = [ pkgs.pciutils ];
+  # systemd.services.supergfxd.path = [ pkgs.pciutils ];
 
   # services.asusd.enable = true;
   # services.asusd.enableUserService = true;
