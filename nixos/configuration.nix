@@ -77,7 +77,7 @@
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
-  services.thermald.enable = false;
+  # services.thermald.enable = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -89,21 +89,23 @@
     };
   };
 
-  services.power-profiles-daemon.enable = true;
-  systemd.services.power-profiles-daemon = {
-    enable = true;
-    wantedBy = [ "multi-user.target" ];
-  };
+  services.power-profiles-daemon.enable = false;
+  # systemd.services.power-profiles-daemon = {
+  #   enable = true;
+  #   wantedBy = [ "multi-user.target" ];
+  # };
 
-  #services.tlp = {
-  #  enable = true;
-  #  settings = {
-  #    CPU_BOOST_ON_AC = 1;
-  #    CPU_BOOST_ON_BAT = 0;
-  #    CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  #    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-  #  };
-  #};
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 1;
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
+      CPU_SCALING_MIN_FREQ_ON_BAT= 1200000;
+    # CPU_ENERGY_PERF_POLICY_ON_BAT="balance_power";
+    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

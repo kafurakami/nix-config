@@ -63,6 +63,7 @@
 
   # Gaming
   bottles-unwrapped
+  lutris
   winetricks
   wineWowPackages.stable
   steam
