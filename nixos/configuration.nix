@@ -254,9 +254,6 @@
     rightalt = -
   '';
 
-  services.openvpn.servers = {
-     arasaka = { config = '' config /home/murphodinger/.vpn/arasaka.ovpn ''; autoStart = false; updateResolvConf = true; };
-  };
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

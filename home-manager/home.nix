@@ -39,6 +39,8 @@
   libsForQt5.gwenview
   mpv
   qbittorrent
+  galaxy-buds-client
+  unstable.appimage-run
 
   # CLI utilites
   curl
@@ -49,6 +51,7 @@
   aria2
   ranger
   glibc
+  nixpkgs-fmt
   gcc13
   libgccjit
   libwebp
@@ -62,8 +65,12 @@
   vscode
 
   # Gaming
-  bottles-unwrapped
+  bottles
   lutris
+  cemu
+  unstable.ryujinx
+  protonup-qt
+  discord
   winetricks
   wineWowPackages.stable
   steam
@@ -128,7 +135,7 @@
   
   oh-my-zsh = {
     enable = true;
-    plugins = [ "git" "fzf" "direnv" "ssh-agent" ]; 
+    plugins = [ "git" "fzf" "direnv" ]; 
     custom = "$HOME/.omz-custom/";
     theme = "powerlevel10k/powerlevel10k";
   };
