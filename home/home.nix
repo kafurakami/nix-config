@@ -72,6 +72,9 @@
     nix-direnv.enable = true;
   };
 
+  # MPRIS Proxy
+  services.mpris-proxy.enable = true;
+
   # LSD Config
   xdg.configFile."lsd/config.yaml".source = ./lsd/config.yaml;
 
